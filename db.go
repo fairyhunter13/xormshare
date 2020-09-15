@@ -33,4 +33,10 @@ func initEngine() {
 	var err error
 	engine, err = xorm.NewEngine("mysql", getConnectionString(localCfg))
 	panicIfErr(err)
+
+	initSync()
+}
+
+func initSync() {
+	engine.Sync2(&User{})
 }
